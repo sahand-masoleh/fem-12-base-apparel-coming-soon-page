@@ -1,0 +1,116 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&display=swap");
+* {
+	margin: 0;
+	padding: 0;
+	font-family: "Josefin Sans", sans-serif;
+	color: var(--desaturated-red);
+}
+
+body {
+	/* ### primary */
+	--desaturated-red: hsl(0, 36%, 70%);
+	--soft-red: hsl(0, 93%, 68%);
+
+	/* ### neutral */
+	--dark-grayish-red: hsl(0, 6%, 24%);
+
+	/* ### gradients */
+	--gradient1: linear-gradient(
+		linear,
+		135deg,
+		from hsl(0, 0%, 100%),
+		to hsl(0, 100%, 98%)
+	);
+	--gradient2: linear-gradient(
+		linear,
+		135deg,
+		from hsl(0, 80%, 86%),
+		to hsl(0, 74%, 74%)
+	);
+
+	--margin: 2em;
+
+	min-height: 100vh;
+	display: grid;
+	grid-template-rows: 1fr auto;
+}
+
+main {
+	display: grid;
+	align-content: start;
+	grid-template-rows: repeat(auto-fit, min-content);
+	padding-top: var(--margin);
+	row-gap: var(--margin);
+}
+
+img {
+	height: 100%;
+	object-fit: cover;
+}
+
+#hero {
+	width: min(40em, 100%);
+}
+
+#logo {
+	height: 1em;
+	padding-left: var(--margin);
+}
+
+#text {
+	margin-top: var(--margin);
+	text-align: center;
+	padding: 0 var(--margin);
+}
+
+#text h1 {
+	text-transform: uppercase;
+	letter-spacing: 0.25em;
+	line-height: 1em;
+	font-size: 2.5em;
+	color: var(--dark-grayish-red);
+	margin-bottom: 0.5em;
+}
+
+#text h1 span {
+	font-weight: 300;
+}
+
+#email-field {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+#email-field input {
+	all: unset;
+	height: 1em;
+	width: 100%;
+	margin: 0 var(--margin);
+	padding: 1em;
+	border-radius: 2em;
+	border: 1px solid var(--desaturated-red);
+}
+
+#email-field button {
+	all: unset;
+	height: 3em;
+	aspect-ratio: 3/2;
+	right: var(--margin);
+	border-radius: 2em;
+	background: linear-gradient(hsl(0, 80%, 86%), hsl(0, 74%, 74%));
+	position: absolute;
+	display: grid;
+	place-items: center;
+}
+
+#email-field button img {
+	height: 1.5em;
+}
+
+.attribution {
+	font-size: 0.5em;
+	text-align: center;
+}
+.attribution a {
+	color: hsl(228, 45%, 44%);
+}
