@@ -38,8 +38,7 @@ body {
 main {
 	display: grid;
 	align-content: start;
-	grid-template-rows: repeat(auto-fit, min-content);
-	padding-top: var(--margin);
+	padding: var(--margin) 0;
 	row-gap: var(--margin);
 }
 
@@ -49,7 +48,7 @@ img {
 }
 
 #hero {
-	width: min(40em, 100%);
+	width: 100%;
 }
 
 #logo {
@@ -73,6 +72,7 @@ img {
 }
 
 #text h1 span {
+	display: block;
 	font-weight: 300;
 }
 
@@ -85,6 +85,7 @@ img {
 	all: unset;
 	height: 1em;
 	width: 100%;
+	margin: 0;
 	margin: 0 var(--margin);
 	padding: 1em;
 	border-radius: 2em;
@@ -108,9 +109,78 @@ img {
 }
 
 .attribution {
+	bottom: 0;
 	font-size: 0.5em;
 	text-align: center;
 }
 .attribution a {
 	color: hsl(228, 45%, 44%);
+}
+
+@media screen and (min-width: 1000px) {
+	body {
+		--margin: 6em;
+	}
+	main {
+		display: grid;
+		grid-template-columns: 55% 45%;
+		/* align-content: center; */
+		height: 100vh;
+		padding: 0;
+		gap: 0;
+	}
+
+	#hero {
+		grid-row: 1 / 4;
+		grid-column: 2 / 3;
+	}
+
+	#logo {
+		height: 3em;
+		align-self: center;
+		margin: 0 var(--margin);
+	}
+
+	#text {
+		text-align: left;
+		align-self: center;
+		margin: 0 var(--margin);
+	}
+
+	#text h1 {
+		letter-spacing: 0.25em;
+		font-size: 5em;
+	}
+
+	#text p {
+		font-size: 1.5em;
+		line-height: 1.5em;
+	}
+
+	#email-field {
+		align-self: start;
+		width: 100%;
+		margin: 0 auto;
+	}
+
+	#email-field input {
+		all: unset;
+		height: 2em; /* needed because of all: unset */
+		margin: 0 calc(var(--margin) * 2);
+		width: 100%;
+		padding: 1em;
+		border-radius: 2em; /* needed because of all: unset */
+		border: 1px solid var(--desaturated-red); /* needed because of all: unset */
+	}
+
+	#email-field button {
+		height: 4em;
+		position: absolute; /* needed because of all: unset */
+		right: calc(48% + var(--margin) + 2em);
+	}
+
+	.attribution {
+		position: absolute;
+		font-size: 1em;
+	}
 }
