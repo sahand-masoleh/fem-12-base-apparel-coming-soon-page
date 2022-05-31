@@ -15,18 +15,8 @@ body {
 	--dark-grayish-red: hsl(0, 6%, 24%);
 
 	/* ### gradients */
-	--gradient1: linear-gradient(
-		linear,
-		135deg,
-		from hsl(0, 0%, 100%),
-		to hsl(0, 100%, 98%)
-	);
-	--gradient2: linear-gradient(
-		linear,
-		135deg,
-		from hsl(0, 80%, 86%),
-		to hsl(0, 74%, 74%)
-	);
+	--gradient1: linear-gradient(hsl(0, 80%, 86%), hsl(0, 74%, 74%));
+	--gradient2: hsl(0, 80%, 86%);
 
 	--margin: 2em;
 
@@ -80,6 +70,7 @@ img {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	position: relative;
 }
 #email-field input {
 	all: unset;
@@ -90,6 +81,15 @@ img {
 	padding: 1em;
 	border-radius: 2em;
 	border: 1px solid var(--desaturated-red);
+	position: relative;
+}
+
+#email-field input:not(:placeholder-shown):focus {
+	color: black;
+}
+
+#email-field input:not(:placeholder-shown):invalid:focus {
+	outline: 2px solid red;
 }
 
 #email-field button {
@@ -98,14 +98,33 @@ img {
 	aspect-ratio: 3/2;
 	right: var(--margin);
 	border-radius: 2em;
-	background: linear-gradient(hsl(0, 80%, 86%), hsl(0, 74%, 74%));
+	background: var(--gradient1);
 	position: absolute;
 	display: grid;
 	place-items: center;
+	cursor: pointer;
+	box-shadow: 0 1em 1em 0 rgb(0, 0, 0, 0.1);
+}
+
+#email-field button:active {
+	background: var(--gradient2);
 }
 
 #email-field button img {
 	height: 1.5em;
+}
+
+#email-field input:not(:placeholder-shown):invalid:focus + button::after {
+	content: "!";
+	position: absolute;
+	left: -3em;
+	width: 1em;
+	padding: 0.5em;
+	color: white;
+	background-color: red;
+	border-radius: 50%;
+	text-align: center;
+	font-weight: 600;
 }
 
 .attribution {
@@ -119,7 +138,8 @@ img {
 
 @media screen and (min-width: 1000px) {
 	body {
-		--margin: 6em;
+		--margin: 4em;
+		background-image: url(./images/bg-pattern-desktop.svg);
 	}
 	main {
 		display: grid;
@@ -149,11 +169,10 @@ img {
 
 	#text h1 {
 		letter-spacing: 0.25em;
-		font-size: 5em;
+		font-size: 3em;
 	}
 
 	#text p {
-		font-size: 1.5em;
 		line-height: 1.5em;
 	}
 
@@ -161,6 +180,7 @@ img {
 		align-self: start;
 		width: 100%;
 		margin: 0 auto;
+		position: relative;
 	}
 
 	#email-field input {
@@ -176,11 +196,11 @@ img {
 	#email-field button {
 		height: 4em;
 		position: absolute; /* needed because of all: unset */
-		right: calc(48% + var(--margin) + 2em);
+		right: 8.1em;
 	}
 
 	.attribution {
 		position: absolute;
-		font-size: 1em;
+		font-size: 0.5em;
 	}
 }
